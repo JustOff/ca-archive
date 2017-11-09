@@ -60,7 +60,7 @@ let DB = {
 						if (dir.exists()) {
 							dir.remove(true);
 						}
-						dir.create(1, FileUtils.PERMS_FILE);
+						dir.create(Ci.nsIFile.DIRECTORY_TYPE, FileUtils.PERMS_DIRECTORY);
 						tmpFile.moveTo(dir, dbname);
 						showMessage(document, "Database has been processed successfully!", "db-warning ok");
 						showMessage(document, "Please reload the page.", "db-warning ok");

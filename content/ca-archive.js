@@ -2,7 +2,7 @@
 (function () {
 	var Cu = Components.utils;
 
-	let dbname = "ca-archive-17110901.sqlite"; let ver = "17110901";
+	let dbname = "ca-archive-17110901.sqlite"; let ver = "17110902";
 
 	Cu.import("chrome://ca-archive/content/db.js" + "?" + ver);
 	if (!DB.openDB(dbname, document)) {
