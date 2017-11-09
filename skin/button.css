@@ -1,0 +1,19 @@
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+@-moz-document url("chrome://browser/content/browser.xul"),
+	url("chrome://global/content/customizeToolbar.xul"),
+	url("chrome://navigator/content/navigator.xul") {
+		
+	#ca-archive-button:not([cui-areatype="menu-panel"]) {
+		-moz-box-orient: horizontal !important;
+	}
+	
+	#ca-archive-button {
+		-moz-image-region: rect(0, 48px, 16px, 32px);
+	}
+
+	#ca-archive-button[cui-areatype="menu-panel"],
+		toolbarpaletteitem[place="palette"] > #ca-archive-button {
+		-moz-image-region: rect(0, 32px, 32px, 0);
+	}
+}

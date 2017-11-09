@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+
+  <link rel="shortcut icon" type="image/x-icon" href="chrome://ca-archive/skin/logo.png">
+  <link rel="stylesheet" href="chrome://ca-archive/skin/ca-archive.css">
+
+  <title>Classic Add-ons Archive</title>
+ </head>
+
+ <body class="html-ltr firefox moz-header-slim is-impala">
+
+  <div id="main-wrapper">
+    <div id="page" class="c">
+      <div class="amo-header">
+        <div class="header-search" role="search">
+          <form id="search" action="caa:list">
+            <input id="search-q" name="q" autocomplete="off" title="" class="text placeholder" placeholder="search for add-ons" type="text">
+            <button class="search-button" type="submit" title="Search" src="chrome://ca-archive/skin/btn-search.png"></button>
+          </form>
+        </div>
+        <div id="masthead">
+          <h1 class="site-title">
+            <a href="caa:">
+              <img alt="Firefox" src="chrome://ca-archive/skin/logo.png">Classic Add-ons Archive <font size="1">(2017.10)</font></a>
+          </h1>
+
+          <nav id="site-nav" class="menu-nav c">
+            <ul>
+              <li id="extensions">
+                <a href="caa:list">Categories</a>
+                <ul class="two-col">
+                  <li><a href="caa:list/alerts-updates">Alerts &amp; Updates</a></li>
+                  <li><a href="caa:list/appearance">Appearance</a></li>
+                  <li><a href="caa:list/bookmarks">Bookmarks</a></li>
+                  <li><a href="caa:list/download-management">Download Management</a></li>
+                  <li><a href="caa:list/feeds-news-blogging">Feeds, News &amp; Blogging</a></li>
+                  <li><a href="caa:list/games-entertainment">Games &amp; Entertainment</a></li>
+                  <li><a href="caa:list/language-support">Language Support</a></li>
+                  <li><a href="caa:list/photos-music-videos">Photos, Music &amp; Videos</a></li>
+                  <li><a href="caa:list/privacy-security">Privacy &amp; Security</a></li>
+                  <li><a href="caa:list/search-tools">Search Tools</a></li>
+                  <li><a href="caa:list/shopping">Shopping</a></li>
+                  <li><a href="caa:list/social-communication">Social &amp; Communication</a></li>
+                  <li><a href="caa:list/tabs">Tabs</a></li>
+                  <li><a href="caa:list/web-development">Web Development</a></li>
+                  <li><a href="caa:list/other">Other</a></li>
+                </ul>
+              </li>
+
+              <li id="listby">
+                <a href="caa:list">List by</a>
+                <ul>
+                  <li><a href="caa:list?sort=users">Most Users</a></li>
+                  <li><a href="caa:list?sort=rating">Top Rated</a></li>
+                  <li><a href="caa:list?sort=reviews">Most Reviews</a></li>
+                  <li><a href="caa:list?sort=created">Newest</a></li>
+                  <li><a href="caa:list?sort=updated">Recently Updated</a></li>
+                  <li><a href="caa:list?sort=name">Name </a></li>
+                </ul>
+              </li>
+
+              <li id="more">
+                <a href="caa:">More…</a>
+                <ul>
+                  <li><a target="_blank" href="https://addons.mozilla.org/en-US/firefox/">Live Firefox Add-ons Site</a></li>
+                  <li><a target="_blank" href="http://web.archive.org/web/*/https://addons.mozilla.org/en-US/firefox/">Wayback Machine</a></li>
+                  <li><a href="caa:about">About</a></li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+    </div>
+
+    <div id="tooltip">
+      <span></span>
+    </div>
+
+  </div>
+
+  <script src="chrome://ca-archive/content/ca-archive.js"></script>
+
+ </body>
+</html>
