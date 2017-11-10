@@ -10,6 +10,7 @@ const CAA_URL ="chrome://ca-archive/content/ca-archive.html";
 const CAA_URI = Services.io.newURI(CAA_URL, null, null);
 
 const nsIURI = CC("@mozilla.org/network/simple-uri;1", "nsIURI");
+const ff47plus = (Services.vc.compare(Services.appinfo.version, 47) > 0);
 
 const CAA_MODULES = [
 	"chrome://ca-archive/content/about.js",
@@ -224,9 +225,13 @@ CAAProtocolHandler.prototype = Object.freeze({
 		return rv;
 	},
 
-	newChannel: function(aURI, aSecurity_or_aLoadInfo) {
+	newChannel: function(aURI) {
+		return this.newChannel2(aURI, null);
+	},
+
+	newChannel2: function(aURI, aSecurity_or_aLoadInfo) {
 		let channel;
-		if (Services.vc.compare(Services.appinfo.version, 47) > 0) {
+		if (aSecurity_or_aLoadInfo || ff47plus) {
 			let uri = Services.io.newURI(CAA_URL, null, null);
 			channel = Services.io.newChannelFromURIWithLoadInfo(uri, aSecurity_or_aLoadInfo);
 		} else {

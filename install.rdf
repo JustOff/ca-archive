@@ -5,6 +5,7 @@
 	<em:version>1.0.6</em:version>
 	<em:type>2</em:type>
 	<em:bootstrap>true</em:bootstrap>
+	<em:multiprocessCompatible>false</em:multiprocessCompatible>
 	<em:name>Classic Add-ons Archive</em:name>
 	<em:description>Catalog of classic Firefox add-ons created before WebExtensions apocalypse</em:description>
 	<em:creator>Off JustOff &lt;Off.Just.Off@gmail.com&gt;</em:creator>
