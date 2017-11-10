@@ -11,6 +11,16 @@ const CAA_URI = Services.io.newURI(CAA_URL, null, null);
 
 const nsIURI = CC("@mozilla.org/network/simple-uri;1", "nsIURI");
 
+const CAA_MODULES = [
+	"chrome://ca-archive/content/about.js",
+	"chrome://ca-archive/content/addon.js",
+	"chrome://ca-archive/content/db.js",
+	"chrome://ca-archive/content/epl.js",
+	"chrome://ca-archive/content/list.js",
+	"chrome://ca-archive/content/tcloud.js",
+	"chrome://ca-archive/content/versions.js"
+];
+
 let factory, gWindowListener = null, branch = "extensions.ca-archive.";
 
 let styleSheetService = Cc["@mozilla.org/content/style-sheet-service;1"].getService(Ci.nsIStyleSheetService);
@@ -292,6 +302,8 @@ function shutdown(data, reason) {
 	if (styleSheetService.sheetRegistered(styleSheetURI, styleSheetService.USER_SHEET)) {
 		styleSheetService.unregisterSheet(styleSheetURI, styleSheetService.USER_SHEET);
 	}
+
+	CAA_MODULES.forEach(Cu.unload, Cu);
 }
 
 function install(data, reason) {}
