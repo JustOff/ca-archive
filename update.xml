@@ -5,13 +5,13 @@
       <RDF:Seq>
         <RDF:li>
           <RDF:Description>
-            <em:version>1.0.6</em:version>
+            <em:version>1.0.7</em:version>
             <em:targetApplication>
               <RDF:Description>
                 <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
                 <em:minVersion>45.0</em:minVersion>
                 <em:maxVersion>56.*</em:maxVersion>
-                <em:updateLink>https://github.com/JustOff/ca-archive/releases/download/1.0.6/ca-archive-1.0.6.xpi</em:updateLink>
+                <em:updateLink>https://github.com/JustOff/ca-archive/releases/download/1.0.7/ca-archive-1.0.7.xpi</em:updateLink>
               </RDF:Description>
             </em:targetApplication>
             <em:targetApplication>
@@ -19,7 +19,7 @@
                 <em:id>{8de7fcbb-c55c-4fbe-bfc5-fc555c87dbc4}</em:id>
                 <em:minVersion>27.0.0</em:minVersion>
                 <em:maxVersion>27.*</em:maxVersion>
-                <em:updateLink>https://github.com/JustOff/ca-archive/releases/download/1.0.6/ca-archive-1.0.6.xpi</em:updateLink>
+                <em:updateLink>https://github.com/JustOff/ca-archive/releases/download/1.0.7/ca-archive-1.0.7.xpi</em:updateLink>
               </RDF:Description>
             </em:targetApplication>
           </RDF:Description>
