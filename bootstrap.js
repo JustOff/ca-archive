@@ -131,6 +131,10 @@ let caaIn = function (w) {
 			b = null;
 		},
 		run : function () {
+			if (Services.ppmm.childCount > 1) {
+				Services.prompt.alert(null, "Classic Add-ons Archive", "Multi-process mode is not supported now,\nplease disable it and restart the browser.");
+				return;
+			}
 			let isOpen = false;
 			let winenu = Services.wm.getEnumerator("navigator:browser");
 			loop: while (winenu.hasMoreElements()) {
