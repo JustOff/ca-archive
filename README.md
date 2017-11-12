@@ -15,3 +15,7 @@ All the data contained in this catalog was obtained from publicly available sour
 ### Legal notices
 
 Except as noted below, this catalog is released under [Mozilla Public License, version 2.0](http://www.mozilla.org/MPL/2.0/). The design is based on AMO website by [Mozilla](https://www.mozilla.org/) and adapted by JustOff under [CC-BY-SA-3.0](http://creativecommons.org/licenses/by-sa/3.0/). All product names, logos and brands are property of their respective owners, specific licenses are indicated in the description of each add-on. All company, product and service names used in this catalog are for identification purposes only.
+
+### Compatibility and installation
+
+This add-on has been tested with the following browsers (in alphabetical order): Basilisk RC1, Firefox ESR 45-52, Firefox 45-58b, Pale Moon 27 and WaterFox 55. In order to install it into Firefox release or beta, you need to disable the extensions signing requirement. Multi-process mode (e10s) is not supported. The installation package is located in the [releases](https://github.com/JustOff/ca-archive/releases) section.
