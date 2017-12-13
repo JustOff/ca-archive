@@ -114,14 +114,36 @@ let button = {
 	}
 };
 
+let menuitem = {
+	meta : {
+		id : "ca-archive-menu",
+		label : "Classic Add-ons Archive",
+		class : "menuitem-iconic"
+	},
+	install : function (w) {
+		let doc = w.document;
+		let m = doc.createElement("menuitem");
+		for (let a in this.meta) {
+			m.setAttribute(a, this.meta[a]);
+		}
+		m.style.listStyleImage = 'url("chrome://ca-archive/skin/button.png")';
+
+		let menu = $(doc, "menu_ToolsPopup");
+		menu.insertBefore(m, null);
+		return m;
+	}
+};
+
 let caaIn = function (w) {
 	let b = button.install(w);
+	let m = menuitem.install(w);
 
 	return {
 		init : function () {
 			w.addEventListener("customizationchange", button.onCustomize, false);
 			w.addEventListener("aftercustomization", button.afterCustomize, false);
 			b.addEventListener("command", this.run, false);
+			m.addEventListener("command", this.run, false);
 		},
 		done : function () {
 			w.removeEventListener("customizationchange", button.onCustomize, false);
@@ -129,6 +151,9 @@ let caaIn = function (w) {
 			b.removeEventListener("command", this.run, false);
 			b.parentNode.removeChild(b);
 			b = null;
+			m.removeEventListener("command", this.run, false);
+			m.parentNode.removeChild(m);
+			m = null;
 		},
 		run : function () {
 			if (Services.ppmm.childCount > 1) {
