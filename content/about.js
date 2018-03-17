@@ -81,7 +81,7 @@ let About = {
 
         <div class="about-home">
           <h2>About</h2>
-          <p>This catalog contains <b>%VERSIONS%</b> versions of <b>%ADDONS%</b> Firefox add-ons created by <b>%AUTHORS%</b> developers over the past <b>14&nbsp;years</b> using XUL/XPCOM technology before Mozilla decided to ruin the classic extensions ecosystem and go exclusively to WebExtensions.</p>
+          <p>This catalog contains <b>%VERSIONS%</b> versions of <b>%ADDONS%</b> Firefox add-ons created by <b>%AUTHORS%</b> developers over the past <b>15&nbsp;years</b> using XUL/XPCOM technology before Mozilla decided to ruin the classic extensions ecosystem and go exclusively to WebExtensions.</p>
           <h2>Who creates these add-ons?</h2>
           <p>The add-ons listed here have been created by a wide range of developers from individual hobbyists to large corporations and were reviewed by a team of AMO editors before being released. Add-ons marked as Experimental have not been reviewed and should be installed with caution.</p>
           <h2>The source of data</h2>
