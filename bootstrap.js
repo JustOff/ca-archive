@@ -236,7 +236,7 @@ CAAProtocolHandler.prototype = Object.freeze({
 
 	protocolFlags: Ci.nsIProtocolHandler.URI_NORELATIVE |
 				   Ci.nsIProtocolHandler.URI_NOAUTH |
-				   Ci.nsIProtocolHandler.URI_DANGEROUS_TO_LOAD |
+				   Ci.nsIProtocolHandler.URI_LOADABLE_BY_ANYONE |
 				   Ci.nsIProtocolHandler.URI_IS_LOCAL_RESOURCE |
 				   Ci.nsIProtocolHandler.URI_OPENING_EXECUTES_SCRIPT,
 
