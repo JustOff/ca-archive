@@ -41,7 +41,7 @@ let DB = {
 					showMessage(document, "Performing initial database provisioning ...", "db-warning ok");
 					throw "Init";
 				} else {
-					throw "CA Archive database has jast been updated, not ready or corrupted!";
+					throw "CA Archive database has just been updated, not ready or corrupted!";
 				}
 			}
 			return true;
