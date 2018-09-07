@@ -2,7 +2,7 @@
 
 ### About
 
-This catalog contains **75,905** versions of **16,706** Firefox add-ons created by **12,538** developers over the past **15 years** using XUL/XPCOM technology before Mozilla decided to ruin the classic extensions ecosystem and go exclusively to WebExtensions.
+This catalog contains **75,929** versions of **16,706** Firefox add-ons created by **12,538** developers over the past **15 years** using XUL/XPCOM technology before Mozilla decided to ruin the classic extensions ecosystem and go exclusively to WebExtensions.
 
 ### Who creates these add-ons?
 
