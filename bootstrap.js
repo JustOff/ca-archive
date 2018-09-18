@@ -128,7 +128,12 @@ let menuitem = {
 		}
 		m.style.listStyleImage = 'url("chrome://ca-archive/skin/button.png")';
 
-		let menu = $(doc, "menu_ToolsPopup");
+		let menu;
+		if (Services.appinfo.name == "SeaMonkey") {
+			menu = $(doc, "taskPopup");
+		} else {
+			menu = $(doc, "menu_ToolsPopup");
+		}
 		menu.insertBefore(m, null);
 		return m;
 	}

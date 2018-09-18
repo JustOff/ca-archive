@@ -92,6 +92,8 @@ let Addon = {
 		let appver;
 		if (Services.appinfo.name == "Pale Moon") {
 			appver = "27.9";
+		} else if (Services.appinfo.name == "SeaMonkey") {
+			appver = "52.0";
 		} else {
 			appver = Services.appinfo.version;
 		}
