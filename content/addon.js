@@ -95,14 +95,15 @@ let Addon = {
 		} else if (Services.appinfo.name != "SeaMonkey") {
 			appver = Services.appinfo.version;
 		}
+		data.downurl = "https://ca-archive.biz.tm/storage/" + Math.trunc(dbQuery.row.addon_id/1000) + "/" + dbQuery.row.addon_id + "/" + dbQuery.row.url.replace(/^\d+\/(.*)/,"$1") + "?origin=caa&action=";
 		if (appver && Services.vc.compare(dbQuery.row.min, appver) <= 0 && Services.vc.compare(appver, dbQuery.row.max) <= 0) {
 			data.compat = "add";
 			data.action = "Install Now";
-			data.downurl = "https://addons.mozilla.org/firefox/downloads/file/" + dbQuery.row.url;
+			data.downurl += "install";
 		} else {
 			data.compat = "download";
 			data.action = "Download";
-			data.downurl = "https://addons.mozilla.org/firefox/downloads/file/" + dbQuery.row.url.replace("/", "/type:attachment/");
+			data.downurl += "download";
 		}
 		let created = new Date(dbQuery.row.created*1000);
 		data.created = created.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });

@@ -22,7 +22,7 @@ const CAA_MODULES = [
 	"chrome://ca-archive/content/versions.js"
 ];
 
-let factory, gWindowListener = null, branch = "extensions.ca-archive.";
+let factory, storageHost, gWindowListener = null, branch = "extensions.ca-archive.";
 
 let styleSheetService = Cc["@mozilla.org/content/style-sheet-service;1"].getService(Ci.nsIStyleSheetService);
 let styleSheetURI = Services.io.newURI("chrome://ca-archive/skin/button.css", null, null);
@@ -293,6 +293,43 @@ function Factory(component) {
 	this.register();
 }
 
+let httpObserver = {
+	observe: function(subject, topic, data) {
+		if (topic == "http-on-examine-response" || topic == "http-on-examine-cached-response") {
+			subject.QueryInterface(Ci.nsIHttpChannel);
+			if (subject.URI.host == storageHost) {
+				if (/origin=caa&action=install$/.test(subject.URI.path)) {
+					subject.setResponseHeader("Content-Disposition", "", false);
+				} else if (/origin=caa&action=download$/.test(subject.URI.path)) {
+					subject.setResponseHeader("Content-Disposition", "attachment", false);
+				}
+			} else if (subject.URI.host == "ca-archive.biz.tm") {
+				if (subject.responseStatus == "302" && /^\/storage\//.test(subject.URI.path)) {
+					let redirect;
+					if ((redirect = /^https?:\/\/(.+?)\//.exec(subject.getResponseHeader("Location"))) !== null) {
+						storageHost = redirect[1];
+					}
+				}
+			}
+		}
+	},
+	QueryInterface: function(aIID) {
+		if (aIID.equals(Ci.nsIObserver) || aIID.equals(Ci.nsISupports)) {
+			return this;
+		} else {
+			throw Cr.NS_NOINTERFACE;
+		}
+	},
+	register: function() {
+		Services.obs.addObserver(this, "http-on-examine-response", false);
+		Services.obs.addObserver(this, "http-on-examine-cached-response", false);
+	},
+	unregister: function() {
+		Services.obs.removeObserver(this, "http-on-examine-response");
+		Services.obs.removeObserver(this, "http-on-examine-cached-response");
+	}
+}
+
 function startup(data, reason) {
 	if (!styleSheetService.sheetRegistered(styleSheetURI, styleSheetService.USER_SHEET)) {
 		styleSheetService.loadAndRegisterSheet(styleSheetURI, styleSheetService.USER_SHEET);
@@ -304,6 +341,8 @@ function startup(data, reason) {
 	defaultBranch.setCharPref("bar", "nav-bar");
 	defaultBranch.setCharPref("before", "");
 	defaultBranch.setCharPref("url", "caa:about");
+
+	httpObserver.register();
 
 	gWindowListener = new BrowserWindowObserver({
 		onStartup: browserWindowStartup,
@@ -322,6 +361,8 @@ function shutdown(data, reason) {
 
 	Services.ww.unregisterNotification(gWindowListener);
 	gWindowListener = null;
+
+	httpObserver.unregister();
 
 	let winenu = Services.wm.getEnumerator("navigator:browser");
 	while (winenu.hasMoreElements()) {

@@ -178,7 +178,7 @@ let List = {
 			if (appver && Services.vc.compare(dbQuery.row.min, appver) <= 0 && Services.vc.compare(appver, dbQuery.row.max) <= 0) {
 				item = item.replace("%COMPAT%", "add");
 				item = item.replace("%ACTION%", "Install Now");
-				item = item.replace("%DOWNURL%", "https://addons.mozilla.org/firefox/downloads/file/" + dbQuery.row.url);
+				item = item.replace("%DOWNURL%", "https://ca-archive.biz.tm/storage/" + Math.trunc(dbQuery.row.addon_id/1000) + "/" + dbQuery.row.addon_id + "/" + dbQuery.row.url.replace(/^\d+\/(.*)/,"$1") + "?origin=caa&action=install");
 			} else {
 				item = item.replace("%COMPAT%", "download");
 				item = item.replace("%ACTION%", "List Versions");

@@ -10,7 +10,7 @@
 	<em:description>Catalog of classic Firefox add-ons created before WebExtensions apocalypse</em:description>
 	<em:creator>Off JustOff &lt;Off.Just.Off@gmail.com&gt;</em:creator>
 	<em:homepageURL>https://github.com/JustOff/ca-archive/</em:homepageURL>
-	<em:updateURL>https://raw.githubusercontent.com/JustOff/ca-archive/master/update.xml</em:updateURL>
+	<em:updateURL>https://ca-archive.biz.tm/update.xml</em:updateURL>
 	<em:targetApplication>
 	  <Description>
 		<em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>

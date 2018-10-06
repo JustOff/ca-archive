@@ -60,7 +60,7 @@ let Versions = {
 			data.next = parseInt(page) + 1;
 		}
 
-		dbQuery = db.createStatement("SELECT is_experimental, version, platform, release_notes, is_restart_required, versions.url AS url, min, max, size, created, licenses.name AS lic_name, licenses.url AS lic_url FROM addons INNER JOIN versions ON addons.addon_id = versions.addon_id LEFT JOIN licenses ON licenses.license_id = versions.license_id WHERE addons." + col + " = :query ORDER BY created DESC LIMIT 30 OFFSET :offset");
+		dbQuery = db.createStatement("SELECT addons.addon_id AS addon_id, is_experimental, version, platform, release_notes, is_restart_required, versions.url AS url, min, max, size, created, licenses.name AS lic_name, licenses.url AS lic_url FROM addons INNER JOIN versions ON addons.addon_id = versions.addon_id LEFT JOIN licenses ON licenses.license_id = versions.license_id WHERE addons." + col + " = :query ORDER BY created DESC LIMIT 30 OFFSET :offset");
 		dbQuery.params.query = query;
 		dbQuery.params.offset = pfrom - 1;
 		data.items = "";
@@ -113,15 +113,17 @@ let Versions = {
 			} else if (Services.appinfo.name != "SeaMonkey") {
 				appver = Services.appinfo.version;
 			}
+			let downurl = "https://ca-archive.biz.tm/storage/" + Math.trunc(dbQuery.row.addon_id/1000) + "/" + dbQuery.row.addon_id + "/" + dbQuery.row.url.replace(/^\d+\/(.*)/,"$1") + "?origin=caa&action=";
 			if (appver && Services.vc.compare(dbQuery.row.min, appver) <= 0 && Services.vc.compare(appver, dbQuery.row.max) <= 0) {
 				item = item.replace("%COMPAT%", "add");
 				item = item.replace("%ACTION%", "Install Now");
-				item = item.replace("%DOWNURL%", "https://addons.mozilla.org/firefox/downloads/file/" + dbQuery.row.url);
+				downurl += "install";
 			} else {
 				item = item.replace("%COMPAT%", "download");
 				item = item.replace("%ACTION%", "Download");
-				item = item.replace("%DOWNURL%", "https://addons.mozilla.org/firefox/downloads/file/" + dbQuery.row.url.replace("/", "/type:attachment/"));
+				downurl += "download";
 			}
+			item = item.replace("%DOWNURL%", downurl);
 
 			data.items += item;
 		}
