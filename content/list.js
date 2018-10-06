@@ -172,12 +172,10 @@ let List = {
 			let appver;
 			if (Services.appinfo.name == "Pale Moon") {
 				appver = "27.9";
-			} else if (Services.appinfo.name == "SeaMonkey") {
-				appver = "52.0";
-			} else {
+			} else if (Services.appinfo.name != "SeaMonkey") {
 				appver = Services.appinfo.version;
 			}
-			if (Services.vc.compare(dbQuery.row.min, appver) <= 0 && Services.vc.compare(appver, dbQuery.row.max) <= 0) {
+			if (appver && Services.vc.compare(dbQuery.row.min, appver) <= 0 && Services.vc.compare(appver, dbQuery.row.max) <= 0) {
 				item = item.replace("%COMPAT%", "add");
 				item = item.replace("%ACTION%", "Install Now");
 				item = item.replace("%DOWNURL%", "https://addons.mozilla.org/firefox/downloads/file/" + dbQuery.row.url);
