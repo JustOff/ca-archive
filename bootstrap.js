@@ -295,7 +295,14 @@ function Factory(component) {
 
 let httpObserver = {
 	observe: function(subject, topic, data) {
-		if (topic == "http-on-examine-response" || topic == "http-on-examine-cached-response") {
+		if (topic == "http-on-modify-request") {
+			subject.QueryInterface(Ci.nsIHttpChannel);
+			if (subject.URI.host == "web.archive.org") {
+				if (/^\/web\/.+?\/(addons\.mozilla\.org\/.+?\/more|addons\.cdn\.mozilla\.net\/.+?\/loading-more\.gif.*?|addons-amo\.cdn\.mozilla\.net\/amo-.+?\.js)$/.test(subject.URI.path)) {
+					subject.cancel(Cr.NS_BINDING_ABORTED);
+				}
+			}
+		} else if (topic == "http-on-examine-response" || topic == "http-on-examine-cached-response") {
 			subject.QueryInterface(Ci.nsIHttpChannel);
 			if (subject.URI.host == storageHost) {
 				if (/origin=caa&action=install$/.test(subject.URI.path)) {
@@ -321,10 +328,12 @@ let httpObserver = {
 		}
 	},
 	register: function() {
+		Services.obs.addObserver(this, "http-on-modify-request", false);
 		Services.obs.addObserver(this, "http-on-examine-response", false);
 		Services.obs.addObserver(this, "http-on-examine-cached-response", false);
 	},
 	unregister: function() {
+		Services.obs.removeObserver(this, "http-on-modify-request");
 		Services.obs.removeObserver(this, "http-on-examine-response");
 		Services.obs.removeObserver(this, "http-on-examine-cached-response");
 	}

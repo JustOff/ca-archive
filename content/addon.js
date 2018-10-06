@@ -48,7 +48,7 @@ let Addon = {
 		data.name = dbQuery.row.name;
 		data.slug = dbQuery.row.slug;
 		data.amo = "https://addons.mozilla.org/addon/" + data.slug + "/";
-		data.wbm = "http://web.archive.org/web/*/https://addons.mozilla.org/en-US/firefox/addon/" + data.slug + "/";
+		data.wbm = "https://web.archive.org/web/*/https://addons.mozilla.org/en-US/firefox/addon/" + data.slug + "/";
 		data.summary = dbQuery.row.summary.replace(/(?:\r\n|\r|\n)/g, "<br>").replace("$", "&#36;");
 		if (dbQuery.row.homepage) {
 			data.homepage = '<li><a class="home" href="' + dbQuery.row.homepage + '">Add-on home page</a></li>';
