@@ -1,16 +1,29 @@
 "use strict";
 let EXPORTED_SYMBOLS = ["TCloud"];
 
+var Cu = Components.utils;
+Cu.import("resource://gre/modules/Services.jsm");
+
 let TCloud = {
 
 	showPage: function(document, db) {
 		let template = this.template;
+		template = this.processTemplate(template);
 		document.title = "Tag Cloud :: Classic Add-ons Archive";
 
 		let contfrag = document.createRange().createContextualFragment(template);
 		let page = document.getElementById("page");
 		let frag = contfrag.firstElementChild;
 		page.appendChild(frag);
+	},
+
+	processTemplate: function(template) {
+		if (Services.appinfo.browserTabsRemoteAutostart) {
+			template = template.replace("%E10S%", "<div style='float: right; border: 1px solid #c9ddf2; padding: 3px; margin-top: 2px;'><a style='text-decoration: none;' href='https://github.com/JustOff/ca-archive/issues/2' target='_blank'>&lowast;&#8201;" + Services.appinfo.name + " in multi-process mode can't restore <span style='font-style: italic;'>caa:</span> urls after restart&#8202;&lowast;</a></div>");
+		} else {
+			template = template.replace("%E10S%", "");
+		}
+		return template;
 	},
 
 	template: `<html>
@@ -47,6 +60,7 @@ let TCloud = {
     </section>
 
     <section class="primary">
+      %E10S%
       <h1>Most Popular Tags</h1>
       <div class="island hero c listing">
 

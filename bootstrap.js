@@ -161,27 +161,46 @@ let caaIn = function (w) {
 			m = null;
 		},
 		run : function () {
-			if (Services.ppmm.childCount > 1) {
-				Services.prompt.alert(null, "Classic Add-ons Archive", "Multi-process mode is not supported now,\nplease disable it and restart the browser.");
+			function isRemote (win) {
+				let loadContext = win.QueryInterface(Ci.nsIInterfaceRequestor).getInterface(Ci.nsIWebNavigation).QueryInterface(Ci.nsILoadContext);
+				return loadContext.useRemoteTabs;
+			}
+			let e10s = isRemote(Services.wm.getMostRecentWindow("navigator:browser"));
+			if (e10s && Services.appinfo.name != "Waterfox") {
+				Services.prompt.alert(null, "Classic Add-ons Archive", "Multi-process mode is not supported now,\nplease disable it and restart " + Services.appinfo.name + ".");
 				return;
 			}
-			let isOpen = false;
+			let isOpen = false, ne10win = null;
 			let winenu = Services.wm.getEnumerator("navigator:browser");
 			loop: while (winenu.hasMoreElements()) {
 				let window = winenu.getNext().QueryInterface(Ci.nsIDOMWindow);
 				for (let tab of window.gBrowser.tabs) {
 					if (tab.linkedBrowser.currentURI.scheme == "caa") {
-						window.focus()
+						window.focus();
 						window.gBrowser.selectedTab = tab;
 						isOpen = true;
 						break loop;
+					}
+				}
+				if (e10s && ne10win === null) {
+					if (!isRemote(window)) {
+						ne10win = window;
 					}
 				}
 			}
 			if (!isOpen) {
 				let mrw = Services.wm.getMostRecentWindow("navigator:browser");
 				let url = Services.prefs.getBranch(branch).getCharPref("url");
-				mrw.gBrowser.selectedTab = mrw.gBrowser.addTab(url);
+				if (!e10s) {
+					mrw.gBrowser.selectedTab = mrw.gBrowser.addTab(url);
+				} else {
+					if (ne10win === null) {
+						mrw.openDialog("chrome://browser/content/", "_blank", "chrome,all,dialog=no,non-remote", url);
+					} else {
+						ne10win.focus();
+						ne10win.gBrowser.selectedTab = ne10win.gBrowser.addTab(url);
+					}
+				}
 				if (url == "caa:about") {
 					Services.prefs.getBranch(branch).setCharPref("url", "caa:");
 				}
