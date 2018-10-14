@@ -22,6 +22,14 @@
                 <em:updateLink>https://github.com/JustOff/ca-archive/releases/download/1.2.1/ca-archive-1.2.1.xpi</em:updateLink>
               </RDF:Description>
             </em:targetApplication>
+            <em:targetApplication>
+              <RDF:Description>
+                <em:id>{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}</em:id>
+                <em:minVersion>2.40</em:minVersion>
+                <em:maxVersion>*</em:maxVersion>
+                <em:updateLink>https://github.com/JustOff/ca-archive/releases/download/1.2.1/ca-archive-1.2.1.xpi</em:updateLink>
+              </RDF:Description>
+            </em:targetApplication>
           </RDF:Description>
         </RDF:li>
       </RDF:Seq>
