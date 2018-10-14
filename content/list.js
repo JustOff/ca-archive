@@ -21,7 +21,7 @@ let List = {
 		if (search === undefined || search == "list?q=") {
 			search = "";
 		} else {
-			search = search.replace(/\+/g, " ")
+			search = decodeURIComponent(search.replace(/\+/g, " "));
 			document.getElementById("search-q").value = search;
 		}
 
