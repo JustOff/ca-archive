@@ -99,7 +99,7 @@ let List = {
 		}
 		if (search != "") {
 			cq1 += "";
-			cq2 += "addons.name LIKE '%" + search + "%' AND ";
+			cq2 += "addons.name LIKE '%" + search.replace(/'/g, "_") + "%' AND ";
 		} else {
 			cq1 += ""; cq2 += "1 AND ";
 		}
