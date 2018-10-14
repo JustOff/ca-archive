@@ -404,7 +404,7 @@ let Addon = {
 
 	devcomm: `
           <section class="expando" id="developer-comments">
-            <h2>Developer’s Comments<a class="toggle" href="#developer-comments"><b></b></a></h2>
+            <h2>Developer's Comments<a class="toggle" href="#developer-comments"><b></b></a></h2>
             <div class="content prose">
               <p>%DEVCOMM%</p>
             </div>
