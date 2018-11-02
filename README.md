@@ -19,3 +19,7 @@ Except as noted below, this catalog is released under [Mozilla Public License, v
 ### Compatibility and installation
 
 This add-on has been tested with the following browsers (in alphabetical order): Basilisk RC1, Firefox ESR 45-52, Firefox 45-58b, Pale Moon 27 and Waterfox 55. In order to install it into Firefox release or beta, you need to disable the extensions signing requirement. Multi-process mode (e10s) is not supported. The installation package is located in the [releases](https://github.com/JustOff/ca-archive/releases) section.
+
+### Usage
+
+This adds a menu entry Tools → Classic Add-ons Archive, as well as a toolbar icon.  Clicking either of these opens a new window with an Add-ons search page (URL `caa:addon`), structured like AMO.  Old versions can be accessed from each add-on's page.
