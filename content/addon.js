@@ -9,10 +9,13 @@ let Addon = {
 	showPage: function(document, db, query) {
 		document.body.className += " gutter addon-details";
 		let data = this.loadData(db, query);
-		document.title = data.name + " :: Classic Add-ons Archive";
-		let template = this.template;
-		template = this.processTemplate(template, data);
-
+		let template;
+		if (data) {
+			document.title = data.name + " :: Classic Add-ons Archive";
+			template = this.processTemplate(this.template, data);
+		} else {
+			template = this.error;
+		}
 		let contfrag = document.createRange().createContextualFragment(template);
 		let frag = contfrag.firstElementChild;
 		let page = document.getElementById("page");
@@ -36,7 +39,12 @@ let Addon = {
 		dbQuery = db.createStatement("SELECT addons.addon_id AS addon_id, addons.name AS name, slug, is_experimental, users, reviews, rating, summary, description, homepage, dev_comments, support_email, support_url, r1, r2, r3, r4, r5, version, release_notes, is_restart_required, versions.url AS url, min, max, size, created, licenses.name AS lic_name, licenses.url AS lic_url, eulas.rowid AS eula, policies.rowid AS policy, icon FROM addons INNER JOIN versions ON addons.addon_id = versions.addon_id LEFT JOIN licenses ON licenses.license_id = versions.license_id LEFT JOIN eulas ON eulas.addon_id = addons.addon_id LEFT JOIN policies ON policies.addon_id = addons.addon_id LEFT JOIN icons ON addons.addon_id = icons.addon_id WHERE addons." + col + " = :query ORDER BY versions.created DESC, versions.version DESC LIMIT 1");
 		dbQuery.params.query = query;
 		dbQuery.executeStep();
-		let id = dbQuery.row.addon_id;
+		let id;
+		try {
+			id = dbQuery.row.addon_id;
+		} catch (e) {
+			return null;
+		}
 		data.reviews = new Intl.NumberFormat("en-US").format(dbQuery.row.reviews);
 		data.rating = Math.round(dbQuery.row.rating);
 		data.users = new Intl.NumberFormat("en-US").format(dbQuery.row.users);
@@ -408,6 +416,14 @@ let Addon = {
             <div class="content prose">
               <p>%DEVCOMM%</p>
             </div>
-          </section>`
+          </section>`,
+
+	error: `<html>
+  <body>
+    <div>
+      <center><br><br><h1>Sorry, no matching add-on found.</h1></center>
+    </div>
+  </body>
+</html>`,
 
 };
