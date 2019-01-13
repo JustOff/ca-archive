@@ -265,7 +265,9 @@ let Addon = {
             <span class="stars large stars-%RATING%" title="Rated %RATING% out of 5 stars">Rated %RATING% out of 5 stars</span>
 
             <div>
-              <span itemprop="ratingCount">%REVIEWS%</span> user reviews
+              <a id="reviews-link" target="_blank" title="Open Reviews on Wayback Machine" href=%WBM%reviews/>
+                <span itemprop="ratingCount">%REVIEWS%</span> user reviews
+              </a>
             </div>
           </div>
 
