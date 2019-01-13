@@ -11,6 +11,7 @@ const CAA_URI = Services.io.newURI(CAA_URL, null, null);
 
 const nsIURI = CC("@mozilla.org/network/simple-uri;1", "nsIURI");
 const ff47plus = (Services.vc.compare(Services.appinfo.version, 47) > 0);
+const hint = '<h3>Try to find "<font color="#003986">%ADDON%</font>" in the <a href="caa:addon/%ADDON%">Classic Add-ons Archive</a>.</h3>';
 
 const CAA_MODULES = [
 	"chrome://ca-archive/content/about.js",
@@ -336,6 +337,14 @@ let httpObserver = {
 						storageHost = redirect[1];
 					}
 				}
+			} else if (subject.URI.host == "addons.mozilla.org" && !Services.appinfo.browserTabsRemoteAutostart) {
+				let addon;
+				if (subject.responseStatus == "404" && (addon = /\/firefox\/addon\/(.*?)\//.exec(subject.URI.path)) !== null) {
+					subject.QueryInterface(Ci.nsITraceableChannel);
+					let newListener = new TracingListener();
+					newListener.addon = addon[1];
+					newListener.originalListener = subject.setNewListener(newListener);
+				}
 			}
 		}
 	},
@@ -355,6 +364,60 @@ let httpObserver = {
 		Services.obs.removeObserver(this, "http-on-modify-request");
 		Services.obs.removeObserver(this, "http-on-examine-response");
 		Services.obs.removeObserver(this, "http-on-examine-cached-response");
+	}
+}
+
+function CCIN(cName, ifaceName) {
+	return Cc[cName].createInstance(Ci[ifaceName]);
+}
+
+function TracingListener() {
+	this.receivedData = [];
+}
+
+TracingListener.prototype = {
+	onDataAvailable: function(request, context, inputStream, offset, count) {
+		let binaryInputStream = CCIN("@mozilla.org/binaryinputstream;1","nsIBinaryInputStream");
+		binaryInputStream.setInputStream(inputStream);
+		let data = binaryInputStream.readBytes(count);
+		this.receivedData.push(data);
+	},
+	onStartRequest: function(request, context) {
+		try {
+			this.originalListener.onStartRequest(request, context);
+		} catch (err) {
+			request.cancel(err.result);
+		}
+	},
+	onStopRequest: function(request, context, statusCode) {
+		let data = this.receivedData.join("");
+		try {
+			data = data.replace(/<div class="Card-contents">/, "$&" + hint.replace(/%ADDON%/g, this.addon));
+			data = data.replace(/<script[\s\S]+ integrity="[\s\S]+?<\/script>/g, "");
+		} catch (e) {}
+
+		let storageStream = CCIN("@mozilla.org/storagestream;1", "nsIStorageStream");
+		storageStream.init(8192, data.length, null);
+		let os = storageStream.getOutputStream(0);
+		if (data.length > 0) {
+			os.write(data, data.length);
+		}
+		os.close();
+
+		try {
+			this.originalListener.onDataAvailable(request, context, storageStream.newInputStream(0), 0, data.length);
+		} catch (e) {}
+
+		try {
+			this.originalListener.onStopRequest(request, context, statusCode);
+		} catch (e) {}
+	},
+	QueryInterface: function(aIID) {
+		if (aIID.equals(Ci.nsIStreamListener) || aIID.equals(Ci.nsISupports)) {
+			return this;
+		} else {
+			throw Cr.NS_NOINTERFACE;
+		}
 	}
 }
 
