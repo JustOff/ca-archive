@@ -355,7 +355,7 @@ let Addon = {
                 <div class="version item" id="version-%VERSION%">
                   <div class="info">
                     <h3>
-                      <a href="caa:addon/%SLUG%/versions/2.7.2" title="Permanent link to this version">Version %VERSION%</a>
+                      <a href="caa:addon/%SLUG%/versions?page=1#version-%VERSION%" title="Permanent link to this version">Version %VERSION%</a>
                       <span class="meta">
                         <time>Released %RELDATE%</time>
                         <span class="filesize">%SIZE%</span>
