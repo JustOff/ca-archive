@@ -45,9 +45,17 @@ let Addon = {
 		} catch (e) {
 			return null;
 		}
-		data.reviews = new Intl.NumberFormat("en-US").format(dbQuery.row.reviews);
+		if (dbQuery.row.reviews >= 0) {
+			data.reviews = '<span itemprop="ratingCount">' + new Intl.NumberFormat("en-US").format(dbQuery.row.reviews) + '</span> user reviews';
+		} else {
+			data.reviews = '';
+		}
 		data.rating = Math.round(dbQuery.row.rating);
-		data.users = new Intl.NumberFormat("en-US").format(dbQuery.row.users);
+		if (dbQuery.row.users >= 0) {
+			data.users = '<div id="daily-users">' + new Intl.NumberFormat("en-US").format(dbQuery.row.users) + ' users</div>';
+		} else {
+			data.users = '';
+		}
 		if (dbQuery.row.icon) {
 			data.icon_url = "chrome://ca-archive/skin/icons/" + dbQuery.row.icon + ".png";
 		} else {
@@ -266,16 +274,14 @@ let Addon = {
 
             <div>
               <a id="reviews-link" target="_blank" title="Open Reviews on Wayback Machine" href=%WBM%reviews/>
-                <span itemprop="ratingCount">%REVIEWS%</span> user reviews
+                %REVIEWS%
               </a>
             </div>
           </div>
 
           %GRATING%
 
-          <div id="daily-users">
-            %USERS% users
-          </div>
+          %USERS%
 
         </aside>
 

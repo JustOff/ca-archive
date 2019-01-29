@@ -154,9 +154,19 @@ let List = {
 			} else {
 				item = item.replace("%ICON%", "chrome://ca-archive/skin/icons/" + Math.trunc(dbQuery.row.addon_id/1000) + "/" + dbQuery.row.addon_id + ".png");
 			}
-			let users = new Intl.NumberFormat("en-US").format(dbQuery.row.users);
+			let users;
+			if (dbQuery.row.users >= 0) {
+				users = '<div class="adu">' + new Intl.NumberFormat("en-US").format(dbQuery.row.users) + ' users</div>';
+			} else {
+				users = '';
+			}
 			item = item.replace("%USERS%", users);
-			let reviews = new Intl.NumberFormat("en-US").format(dbQuery.row.reviews);
+			let reviews;
+			if (dbQuery.row.reviews >= 0) {
+				reviews = '(' + new Intl.NumberFormat("en-US").format(dbQuery.row.reviews) + ')';
+			} else {
+				reviews = '';
+			}
 			item = item.replace("%REVIEWS%", reviews);
 			let restart = "";
 			if (dbQuery.row.is_restart_required == false) {
@@ -302,9 +312,9 @@ let List = {
               <div class="vitals c">
                 <span class="rating">
                   <span class="stars stars-%RATING%" title="Rated %RATING% out of 5 stars">Rated %RATING% out of 5 stars</span>
-                  <a href="caa:addon/%SLUG%">(%REVIEWS%)</a>
+                  <a href="caa:addon/%SLUG%">%REVIEWS%</a>
                 </span>
-                <div class="adu">%USERS% users</div>
+                %USERS%
               </div>
             </div>
             <div class="action">

@@ -1252,6 +1252,10 @@ button.search-button {
     background-position: -65px 0
 }
 
+.stars.stars--1 {
+    display: none !important
+}
+
 .stars.large {
     display: block;
     background: url(stars-16.png) no-repeat left top;
