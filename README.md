@@ -2,7 +2,7 @@
 
 ### About
 
-This catalog contains **75,929** versions of **16,706** Firefox add-ons created by **12,538** developers over the past **15 years** using XUL/XPCOM technology before Mozilla decided to ruin the classic extensions ecosystem and go exclusively to WebExtensions.
+This catalog contains **93,598** versions of **19,450** Firefox add-ons created by **14,274** developers over the past **15 years** using XUL/XPCOM technology before Mozilla decided to ruin the classic extensions ecosystem and go exclusively to WebExtensions.
 
 ### Who creates these add-ons?
 
@@ -18,4 +18,4 @@ Except as noted below, this catalog is released under [Mozilla Public License, v
 
 ### Compatibility and installation
 
-This add-on has been tested with the following browsers (in alphabetical order): Basilisk RC1, Firefox ESR 45-52, Firefox 45-58b, Pale Moon 27 and Waterfox 55. In order to install it into Firefox release or beta, you need to disable the extensions signing requirement. Multi-process mode (e10s) is not supported. The installation package is located in the [releases](https://github.com/JustOff/ca-archive/releases) section.
+This add-on has been tested with the following browsers (in alphabetical order): Basilisk RC1+, Firefox ESR 45-52, Firefox 45-58b, Pale Moon 27+, SeaMonkey 2.40+ and Waterfox 55+. In order to install it into Firefox release or beta, you need to disable the extensions signing requirement. Multi-process mode (e10s) is not supported. The installation package is located in the [releases](https://github.com/JustOff/ca-archive/releases) section.
