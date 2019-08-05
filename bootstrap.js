@@ -23,7 +23,7 @@ const CAA_MODULES = [
 	"chrome://ca-archive/content/versions.js"
 ];
 
-let factory, storageHost, gWindowListener = null, branch = "extensions.ca-archive.";
+let factory, storageHost, unhideToolbar, gWindowListener = null, branch = "extensions.ca-archive.";
 
 let styleSheetService = Cc["@mozilla.org/content/style-sheet-service;1"].getService(Ci.nsIStyleSheetService);
 let styleSheetURI = Services.io.newURI("chrome://ca-archive/skin/button.css", null, null);
@@ -79,7 +79,7 @@ let button = {
 				}
 				toolbar.insertItem(this.meta.id, nextItem);
 			}
-			if (toolbar.getAttribute("collapsed") == "true") {
+			if (unhideToolbar && toolbar.getAttribute("collapsed") == "true") {
 				try { w.setToolbarVisibility(toolbar, true); } catch(e) {}
 			}
 		}
@@ -451,6 +451,8 @@ function startup(data, reason) {
 	defaultBranch.setCharPref("bar", "nav-bar");
 	defaultBranch.setCharPref("before", "");
 	defaultBranch.setCharPref("url", "caa:about");
+	defaultBranch.setBoolPref("unhideToolbar", true);
+	unhideToolbar = Services.prefs.getBranch(branch).getBoolPref("unhideToolbar");
 
 	httpObserver.register();
 
