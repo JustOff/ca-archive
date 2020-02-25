@@ -149,7 +149,7 @@ let menuitem = {
 		m.style.listStyleImage = 'url("chrome://ca-archive/skin/button.png")';
 
 		let menu;
-		if (Services.appinfo.name == "SeaMonkey") {
+		if (Services.appinfo.name == "SeaMonkey" || Services.appinfo.name == "Iceape-UXP") {
 			menu = $(doc, "taskPopup");
 		} else {
 			menu = $(doc, "menu_ToolsPopup");

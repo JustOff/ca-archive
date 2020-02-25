@@ -182,7 +182,7 @@ let List = {
 			let appver;
 			if (Services.appinfo.name == "Pale Moon") {
 				appver = "27.9";
-			} else if (Services.appinfo.name != "SeaMonkey") {
+			} else if (Services.appinfo.name != "SeaMonkey" && Services.appinfo.name != "Iceape-UXP") {
 				appver = Services.appinfo.version;
 			}
 			if (appver && Services.vc.compare(dbQuery.row.min, appver) <= 0 && Services.vc.compare(appver, dbQuery.row.max) <= 0) {
