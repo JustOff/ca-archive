@@ -108,7 +108,7 @@ let Addon = {
 		let appver;
 		if (Services.appinfo.name == "Pale Moon") {
 			appver = "27.9";
-		} else if (Services.appinfo.name != "SeaMonkey") {
+		} else if (Services.appinfo.name != "SeaMonkey" && Services.appinfo.name != "Iceape-UXP") {
 			appver = Services.appinfo.version;
 		}
 		data.downurl = "https://ca-archive.biz.tm/storage/" + Math.trunc(dbQuery.row.addon_id/1000) + "/" + dbQuery.row.addon_id + "/" + dbQuery.row.url.replace(/^\d+\/(.*)/,"$1") + "?origin=caa&action=";

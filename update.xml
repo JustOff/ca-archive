@@ -30,6 +30,15 @@
                 <em:updateLink>https://github.com/JustOff/ca-archive/releases/download/2.0.1/ca-archive-2.0.1.xpi</em:updateLink>
               </RDF:Description>
             </em:targetApplication>
+            <!-- Iceape-UXP -->
+            <em:targetApplication>
+              <RDF:Description>
+                <em:id>{9184b6fe-4a5c-484d-8b4b-efbfccbfb514}</em:id>
+                <em:minVersion>52.0</em:minVersion>
+                <em:maxVersion>52.*</em:maxVersion>
+                <em:updateLink>https://github.com/JustOff/ca-archive/releases/download/2.0.1/ca-archive-2.0.1.xpi</em:updateLink>
+              </RDF:Description>
+            </em:targetApplication>
           </RDF:Description>
         </RDF:li>
       </RDF:Seq>

@@ -32,5 +32,13 @@
 		<em:maxVersion>*</em:maxVersion>
 	  </Description>
 	</em:targetApplication>
+        <!-- Iceape-UXP -->
+        <em:targetApplication>
+          <Description>
+                <em:id>{9184b6fe-4a5c-484d-8b4b-efbfccbfb514}</em:id>
+                <em:minVersion>52.0</em:minVersion>
+                <em:maxVersion>52.*</em:maxVersion>
+          </Description>
+        </em:targetApplication>
   </Description>
 </RDF>
