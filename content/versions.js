@@ -113,7 +113,7 @@ let Versions = {
 			} else if (Services.appinfo.name != "SeaMonkey" && Services.appinfo.name != "Iceape-UXP") {
 				appver = Services.appinfo.version;
 			}
-			let downurl = "https://ca-archive.biz.tm/storage/" + Math.trunc(dbQuery.row.addon_id/1000) + "/" + dbQuery.row.addon_id + "/" + dbQuery.row.url.replace(/^\d+\/(.*)/,"$1") + "?origin=caa&action=";
+			let downurl = "https://ca-archive.us.to/storage/" + Math.trunc(dbQuery.row.addon_id/1000) + "/" + dbQuery.row.addon_id + "/" + dbQuery.row.url.replace(/^\d+\/(.*)/,"$1") + "?origin=caa&action=";
 			if (appver && Services.vc.compare(dbQuery.row.min, appver) <= 0 && Services.vc.compare(appver, dbQuery.row.max) <= 0) {
 				item = item.replace("%COMPAT%", "add");
 				item = item.replace("%ACTION%", "Install Now");

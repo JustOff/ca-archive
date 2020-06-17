@@ -1,44 +1,43 @@
 <?xml version='1.0' encoding='utf-8'?>
 <RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:em="http://www.mozilla.org/2004/em-rdf#">
   <Description about="urn:mozilla:install-manifest">
-	<em:id>ca-archive@Off.JustOff</em:id>
-	<em:version>2.0.1</em:version>
-	<em:type>2</em:type>
-	<em:bootstrap>true</em:bootstrap>
-	<em:multiprocessCompatible>false</em:multiprocessCompatible>
-	<em:name>Classic Add-ons Archive</em:name>
-	<em:description>Catalog of classic Firefox add-ons created before WebExtensions apocalypse</em:description>
-	<em:creator>Off JustOff &lt;Off.Just.Off@gmail.com&gt;</em:creator>
-	<em:homepageURL>https://github.com/JustOff/ca-archive/</em:homepageURL>
-	<em:updateURL>https://ca-archive.biz.tm/update.xml</em:updateURL>
-	<em:targetApplication>
-	  <Description>
-		<em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
-		<em:minVersion>45.0</em:minVersion>
-		<em:maxVersion>56.*</em:maxVersion>
-	  </Description>
-	</em:targetApplication>
-	<em:targetApplication>
-	  <Description>
-		<em:id>{8de7fcbb-c55c-4fbe-bfc5-fc555c87dbc4}</em:id>
-		<em:minVersion>27.0.0</em:minVersion>
-		<em:maxVersion>28.*</em:maxVersion>
-	  </Description>
-	</em:targetApplication>
-	<em:targetApplication>
-	  <Description>
-		<em:id>{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}</em:id>
-		<em:minVersion>2.40</em:minVersion>
-		<em:maxVersion>*</em:maxVersion>
-	  </Description>
-	</em:targetApplication>
-        <!-- Iceape-UXP -->
-        <em:targetApplication>
-          <Description>
-                <em:id>{9184b6fe-4a5c-484d-8b4b-efbfccbfb514}</em:id>
-                <em:minVersion>52.0</em:minVersion>
-                <em:maxVersion>52.*</em:maxVersion>
-          </Description>
-        </em:targetApplication>
+    <em:id>ca-archive@Off.JustOff</em:id>
+    <em:version>2.0.2</em:version>
+    <em:type>2</em:type>
+    <em:bootstrap>true</em:bootstrap>
+    <em:multiprocessCompatible>false</em:multiprocessCompatible>
+    <em:name>Classic Add-ons Archive</em:name>
+    <em:description>Catalog of classic Firefox add-ons created before WebExtensions apocalypse</em:description>
+    <em:creator>Off JustOff &lt;Off.Just.Off@gmail.com&gt;</em:creator>
+    <em:homepageURL>https://github.com/JustOff/ca-archive/</em:homepageURL>
+    <em:updateURL>https://ca-archive.us.to/update.xml</em:updateURL>
+    <em:targetApplication>
+      <Description>
+        <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
+        <em:minVersion>45.0</em:minVersion>
+        <em:maxVersion>56.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+    <em:targetApplication>
+      <Description>
+        <em:id>{8de7fcbb-c55c-4fbe-bfc5-fc555c87dbc4}</em:id>
+        <em:minVersion>27.0.0</em:minVersion>
+        <em:maxVersion>28.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+    <em:targetApplication>
+      <Description>
+        <em:id>{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}</em:id>
+        <em:minVersion>2.40</em:minVersion>
+        <em:maxVersion>2.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+    <em:targetApplication>
+      <Description>
+        <em:id>{9184b6fe-4a5c-484d-8b4b-efbfccbfb514}</em:id>
+        <em:minVersion>52.0</em:minVersion>
+        <em:maxVersion>52.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
   </Description>
 </RDF>

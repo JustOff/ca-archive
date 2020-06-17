@@ -349,7 +349,7 @@ let httpObserver = {
 				} else if (/origin=caa&action=download$/.test(subject.URI.path)) {
 					subject.setResponseHeader("Content-Disposition", "attachment", false);
 				}
-			} else if (subject.URI.host == "ca-archive.biz.tm") {
+			} else if (subject.URI.host == "ca-archive.us.to") {
 				if (subject.responseStatus == "302" && /^\/storage\//.test(subject.URI.path)) {
 					let redirect;
 					if ((redirect = /^https?:\/\/(.+?)\//.exec(subject.getResponseHeader("Location"))) !== null) {
