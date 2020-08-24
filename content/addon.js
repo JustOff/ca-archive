@@ -198,7 +198,7 @@ let Addon = {
 			let cat_names = { "alerts-updates": "Alerts &amp; Updates", "appearance": "Appearance", "bookmarks": "Bookmarks", "download-management": "Download Management", "feeds-news-blogging": "Feeds, News &amp; Blogging", "games-entertainment": "Games &amp; Entertainment", "language-support": "Language Support", "photos-music-videos": "Photos, Music &amp; Videos", "privacy-security": "Privacy &amp; Security", "search-tools": "Search Tools", "shopping": "Shopping", "social-communication": "Social &amp; Communication", "tabs": "Tabs", "web-development": "Web Development", "other": "Other"};
 			data.categories = "<h3>Related Categories</h3><ul>";
 			for (let category of categories) {
-				data.categories += '<li><a href="caa:list/category' + category + '">' + cat_names[category] + '</a></li>';
+				data.categories += '<li><a href="caa:list/' + category + '">' + cat_names[category] + '</a></li>';
 			}
 			data.categories += "</ul>";
 		} else {
