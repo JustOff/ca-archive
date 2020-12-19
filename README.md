@@ -10,7 +10,7 @@ The add-ons listed here have been created by a wide range of developers from ind
 
 ### The source of data
 
-All the data contained in this catalog was obtained from publicly available sources such as [AMO](https://addons.mozilla.org/), [Wayback Machine](http://web.archive.org/) and other open Internet directories and collections. Cloud storage is kindly provided by [Waterfox Project](https://www.waterfoxproject.org/).
+All the data contained in this catalog was obtained from publicly available sources such as [AMO](https://addons.mozilla.org/), [Wayback Machine](http://web.archive.org/) and other open Internet directories and collections. Cloud storage is kindly provided by [Waterfox](https://www.waterfox.net/).
 
 ### Legal notices
 
